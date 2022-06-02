@@ -1,3 +1,3 @@
-# vitejs-vite-zh5mvb
+# Bubble Pop App
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vitejs-vite-zh5mvb)
+[Open on StackBlitz ⚡️](https://stackblitz.com/github/brittneypostma/bubble-pop/tree/main/start)
