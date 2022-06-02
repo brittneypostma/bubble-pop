@@ -1,11 +1,8 @@
 <script>
 	import { quintIn } from 'svelte/easing'
-	import { onDestroy } from 'svelte'
+	import { randomSound } from '../../utils/sounds'
 
-	let timeout,
-		popped = false
-
-	onDestroy(() => clearTimeout(timeout))
+	let popped = false
 
 	const popTransition = (node, options) => {
 		const opacity = getComputedStyle(node).opacity
@@ -19,7 +16,11 @@
 		}
 	}
 
-	const pop = () => (popped = !popped)
+	const pop = () => {
+		const pop = new Audio(randomSound)
+		pop.play()
+		popped = true
+	}
 </script>
 
 <div class="positioner">
