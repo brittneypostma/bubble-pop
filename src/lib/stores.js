@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+import { random } from './utils/random'
 
 export const session = writable(false)
 

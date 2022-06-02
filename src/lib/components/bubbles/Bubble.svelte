@@ -1,6 +1,7 @@
 <script>
 	import { quintIn } from 'svelte/easing'
 	import { randomSound } from '../../utils/sounds'
+	import { score } from '../../stores'
 
 	let popped = false
 
@@ -19,6 +20,7 @@
 	const pop = () => {
 		const pop = new Audio(randomSound)
 		pop.play()
+		score.set($score + 1)
 		popped = true
 	}
 </script>
