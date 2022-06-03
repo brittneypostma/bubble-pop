@@ -7,15 +7,15 @@
 	}
 </script>
 
-	{#if $session}
+{#if $session}
 	<aside>
 		<h1>Bubble Pop</h1>
 		<h2>{$score}</h2>
 		<button on:click={stopGame}>Stop Game</button>
 	</aside>
-	{:else if $lastScore !== 'null'}
-		<p>Previous High Score: {$lastScore}</p>
-	{/if}
+{:else if $lastScore !== null}
+	<p>Previous High Score: {$lastScore}</p>
+{/if}
 
 <style>
 	aside {

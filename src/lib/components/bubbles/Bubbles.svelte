@@ -1,31 +1,31 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte'
+	import { afterUpdate, onMount, tick } from 'svelte'
 	import { random } from '../../utils/random.js'
 	import { score, bubbles } from '../../stores'
 	import Bubble from './Bubble.svelte'
 
-	// if($score === 10) {
-	// 	console.log('10')
-	// }
+	$: moreBubbles()
 
-	$: if ($score > 5) {
-			bubbles.set($bubbles + 10)
-			console.log($bubbles)
-		}
-
- 
-	onMount(() => {
+	async function moreBubbles() {
 		bubbles.set(10)
+		await tick()
+		bubbles.set(10)
+	}
+
+	onMount(() => {
+		moreBubbles()
 	})
 </script>
 
 <div id="bubbles">
-	{#each Array(10) as _, i (i)}
-		<Bubble
-			--scale={random(2, 3.5) / 10}
-			--offset="{i * random(8, 10)}%"
-			--delay="{random(i, Math.min(i + 1, 5)) * random(100, 3000)}ms"
-			--speed="{random(15, 25)}s"
-		/>
-	{/each}
+	{#key $score % 5}
+		{#each Array(10) as _, i}
+			<Bubble
+				--scale={random(2, 3.5) / 10}
+				--offset="{i * random(2, 8)}%"
+				--delay="{random(i, Math.min(i + 1, 5)) * random(100, 3000)}ms"
+				--speed="{random(10, 25)}s"
+			/>
+		{/each}
+	{/key}
 </div>

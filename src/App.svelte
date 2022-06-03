@@ -3,17 +3,22 @@
 	import Bubbles from './lib/components/bubbles/Bubbles.svelte'
 	import SideBar from './lib/components/SideBar.svelte'
 	import Footer from './lib/components/Footer.svelte'
-	import { session } from './lib/stores'
+	import { score, session } from './lib/stores'
 	import { onMount } from 'svelte/internal'
 	onMount(() => {
 		session.set(false)
 	})
+
+	function startGame() {
+		score.set(0)
+		session.set(true)
+	}
 </script>
 
 <main>
 	{#if $session === false}
 		<h1>Bubble Pop</h1>
-		<button on:click={() => session.set(true)}>Start Popping</button>
+		<button on:click={startGame}>Start Popping</button>
 		<Footer />
 	{:else}
 		<Bubbles />
