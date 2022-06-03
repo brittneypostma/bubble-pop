@@ -1,25 +1,11 @@
 <script>
-	import { quintIn } from 'svelte/easing'
-	import { randomSound } from '../../utils/sounds'
+	import { popTransition } from '../../utils/popTransition'
 	import { score } from '../../stores'
+	import { pop } from '../../actions/pop'
 
 	let popped = false
 
-	const popTransition = (node, options) => {
-		const opacity = getComputedStyle(node).opacity
-
-		return {
-			easing: quintIn,
-			duration: options.duration || 200,
-			delay: options.delay || 0,
-
-			css: (t, u) => `transform: scale3d(${u + 1}, ${u + 1}, ${u + 1}); opacity: ${t * opacity}`
-		}
-	}
-
-	const pop = () => {
-		const pop = new Audio(randomSound)
-		pop.play()
+	const addScore = () => {
 		score.set($score + 1)
 		popped = true
 	}
@@ -28,7 +14,7 @@
 <div class="positioner">
 	<div class="positioner-inner">
 		{#if !popped}
-			<div class="bubble" on:click={pop} transition:popTransition|local />
+			<div class="bubble" on:click={addScore} use:pop transition:popTransition|local />
 		{/if}
 	</div>
 </div>

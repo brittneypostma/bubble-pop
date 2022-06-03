@@ -1,8 +1,13 @@
 import { writable } from 'svelte/store'
-import { random } from './utils/random'
 
 export const session = writable(false)
 
-export const lastScore = writable(null)
+export const bubbles = writable(0)
 
 export const score = writable(0)
+
+const savedScore = localStorage.score
+
+export const lastScore = writable(savedScore || null)
+
+lastScore.subscribe(score => localStorage.score = score)

@@ -1,16 +1,21 @@
 <script>
 	import { session, lastScore, score } from '../stores'
+
+	function stopGame() {
+		lastScore.set($score)
+		session.set(false)
+	}
 </script>
 
-<aside>
 	{#if $session}
+	<aside>
 		<h1>Bubble Pop</h1>
 		<h2>{$score}</h2>
-		<button on:click={() => session.set(false)}>Stop Game</button>
-	{:else if $lastScore}
+		<button on:click={stopGame}>Stop Game</button>
+	</aside>
+	{:else if $lastScore !== 'null'}
 		<p>Previous High Score: {$lastScore}</p>
 	{/if}
-</aside>
 
 <style>
 	aside {

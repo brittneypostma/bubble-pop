@@ -8,7 +8,6 @@
 	onMount(() => {
 		session.set(false)
 	})
-	// console.log($session)
 </script>
 
 <main>
@@ -17,9 +16,10 @@
 		<button on:click={() => session.set(true)}>Start Popping</button>
 		<Footer />
 	{:else}
-		<SideBar />
 		<Bubbles />
 	{/if}
+
+	<SideBar />
 </main>
 
 <style>
