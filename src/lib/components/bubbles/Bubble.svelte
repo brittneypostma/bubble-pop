@@ -1,14 +1,22 @@
 <script>
-	import { popTransition } from '../../utils/popTransition'
-	import { score } from '../../stores'
-	import { pop } from '../../actions/pop'
+	import { popTransition } from '../../utils/popTransition';
+	import { score } from '../../stores';
+	import { pop } from '../../actions/pop';
 
-	let popped = false
+	let popped = false;
+	// let timeout = false;
 
 	const addScore = () => {
-		score.set($score + 1)
-		popped = true
-	}
+		score.set($score + 1);
+		popped = true;
+
+		// if (!timeout) {
+		// 	timeout = setTimeout(() => {
+		// 		popped = false;
+		// 		timeout = null;
+		// 	}, 12000);
+		// }
+	};
 </script>
 
 <div class="positioner">

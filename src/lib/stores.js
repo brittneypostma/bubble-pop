@@ -1,14 +1,12 @@
-import { writable } from 'svelte/store'
+import { writable, readable } from 'svelte/store'
 
 export const session = writable(false)
 
-export const bubbles = writable(0)
-
 export const score = writable(0)
 
-const savedScore = localStorage.score
+export const finalScore = writable(1)
 
-// const highScore = savedScore > score ? savedScore : score
+const savedScore = localStorage.score
 
 export const lastScore = writable(savedScore || null)
 
