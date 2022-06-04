@@ -4,7 +4,7 @@ export const session = writable(false)
 
 export const score = writable(0)
 
-export const finalScore = writable(1)
+export const finalScore = writable(10)
 
 const savedScore = localStorage.score
 
