@@ -24,7 +24,7 @@
 		<ConfettiExplosion />
 	</div>
 {:else if $session}
-	<aside transition:fade>
+	<aside class="glass" transition:fade>
 		<h1>Bubble Pop</h1>
 		<h2>{$score}</h2>
 		<button on:click={resetGame}>Stop Game</button>
@@ -40,22 +40,10 @@
 		justify-content: center;
 	}
 	aside {
-		display: grid;
-		gap: var(--size-1);
-		text-align: center;
-		max-width: var(--size-xs);
+		border-radius: var(--radius-blob-2);
+		padding: var(--size-10);
 		position: absolute;
 		bottom: 0;
-		background: var(--navy);
-		color: var(--white);
-		border-radius: var(--radius-blob-2);
-		border: 2px solid var(--white);
-		margin: var(--size-4) auto;
-		padding: var(--size-10);
+		margin-inline: auto;
 	}
-	/* h1 {
-		text-transform: uppercase;
-		font-size: var(--size-7);
-		text-align: center;
-	} */
 </style>

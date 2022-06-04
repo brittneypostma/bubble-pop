@@ -2,6 +2,7 @@
 	import './lib/styles.css';
 	import Bubbles from './lib/components/bubbles/Bubbles.svelte';
 	import GameBar from './lib/components/GameBar.svelte';
+	import Inputs from './lib/components/Inputs.svelte';
 	import Footer from './lib/components/Footer.svelte';
 	import { score, session, lastScore } from './lib/stores';
 	import { onMount } from 'svelte/internal';
@@ -16,8 +17,8 @@
 </script>
 
 <main>
-	<GameBar />
 	{#if !$session}
+		<Inputs />
 		<h1>Bubble Pop</h1>
 		<button on:click={startGame}>Start Popping</button>
 		{#if $lastScore !== 'null' || $lastScore !== null}
@@ -26,6 +27,7 @@
 		<Footer />
 	{:else if $session}
 		<Bubbles />
+		<GameBar />
 	{/if}
 </main>
 
