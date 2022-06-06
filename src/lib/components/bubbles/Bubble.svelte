@@ -1,12 +1,12 @@
 <script>
 	import { popTransition } from '../../utils/popTransition';
 	import { score } from '../../stores';
-	import { pop } from '../../actions/pop';
+	import { popSound } from '../../actions/pop';
 
 	let popped = false;
 	// let timeout = false;
 
-	const addScore = () => {
+	const pop = () => {
 		score.set($score + 1);
 		popped = true;
 
@@ -22,7 +22,7 @@
 <div class="positioner">
 	<div class="positioner-inner">
 		{#if !popped}
-			<div class="bubble" on:click={addScore} use:pop transition:popTransition|local />
+			<div class="bubble" on:click={pop} use:popSound transition:popTransition|local />
 		{/if}
 	</div>
 </div>
