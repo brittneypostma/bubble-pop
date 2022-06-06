@@ -21,7 +21,7 @@
 		<Inputs />
 		<h1>Bubble Pop</h1>
 		<button on:click={startGame}>Start Popping</button>
-		{#if $lastScore !== 'null' || $lastScore !== null}
+		{#if $lastScore !== 'null'}
 			<h2>Previous High Score: {$lastScore}</h2>
 		{/if}
 	{:else if $session}
