@@ -1,3 +1,7 @@
+<script>
+	import './lib/styles.css';
+</script>
+
 <main>
 	<h1>Welcome to Bubble Pop</h1>
 </main>
